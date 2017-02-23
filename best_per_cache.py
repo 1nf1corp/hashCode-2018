@@ -34,15 +34,7 @@ def endpointsConnectedToCache(endPoints):
       else:
         connectedCaches[cache] = [e]
 
-  for key, value in connectedCaches.items() :
-    print (key, value)
-
   return connectedCaches
-
-# req_dict = {(0,2): 1000, (2,3): 1500}
-# endpoints = [(4, {0: 1, 1:3}), (10, {}), (3, {0: 2, 1:2}) ]
-# print(solve_per_cache(100, endpoints, [30,100,40,50,80], req_dict))
-
 
 if __name__ == '__main__':
     filename = sys.argv[1]
