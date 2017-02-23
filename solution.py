@@ -15,7 +15,7 @@ def findOptimalVideos(X, S, requests):
     for v_id, R_n in requests.items():
         videos.append((v_id, R_n))
 
-    videos = sorted(videos, key=lambda r: r[1])
+    videos = sorted(videos, key=lambda r: r[1], reverse=True)
 
     cached = []
     for video in videos:
