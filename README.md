@@ -1,2 +1,2 @@
 # hashcode-pizza
-Google Hashcode 2017 practice round
+Google Hashcode 2017
