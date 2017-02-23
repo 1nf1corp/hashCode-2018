@@ -1,6 +1,5 @@
 print("Pizzaparser")
 
-print "Values:"
 pizzaMatrix = []
 numberOfRows = 0
 numberOfCols = 0
@@ -16,6 +15,7 @@ f.close()
 # Get values
 valueLine = pizzaMatrix.pop(0)
 valueList = [int(i) for i in valueLine.split()]
+print "Values:"
 print valueList
 numberOfRows = valueList[0]
 print("numberOfRows " + str(numberOfRows))
@@ -31,3 +31,7 @@ print "Pizza:"
 print(pizzaMatrix)
 for row in pizzaMatrix:
 	print(row),
+
+# Example 
+print "Example: Print element at row 1, column 3"
+print pizzaMatrix[1][3]
