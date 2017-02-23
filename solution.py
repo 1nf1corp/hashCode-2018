@@ -26,6 +26,7 @@ def itemName(item): return item[2]
 def pack5(items,sizeLimit):
     P = {}
     for nItems in range(len(items)+1):
+        print(nItems)
         for lim in range(sizeLimit+1):
             if nItems == 0:
                 P[nItems,lim] = 0
