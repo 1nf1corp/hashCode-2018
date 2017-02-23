@@ -1,3 +1,4 @@
+import sys
 import parse
 
 def accumulate(all_reqs):
@@ -27,7 +28,8 @@ def findOptimalVideos(X, S, requests):
     return cached
 
 if __name__ == '__main__':
-    input = parse.parse('inputs/kittens.in')
+    filename = sys.argv[1]
+    input = parse.parse(filename)
     endpoints = input[0]
     requests = input[1]
     params = input[2]
