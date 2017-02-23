@@ -1,5 +1,6 @@
 import sys
 import parse
+import knapsack
 
 def accumulate(all_reqs):
     ret = {}
@@ -13,19 +14,42 @@ def accumulate(all_reqs):
 def findOptimalVideos(X, S, requests):
     videos = []
     for v_id, R_n in requests.items():
-        videos.append((v_id, R_n))
+        videos.append((S[v_id], R_n, v_id))
 
-    videos = sorted(videos, key=lambda r: r[1], reverse=True)
+    return pack5(videos, X)
 
-    cached = []
-    for video in videos:
-        v_id = video[0]
+# Borrowed from 0-1 knapsack problem dynamic program
+# David Eppstein, ICS, UCI, 2/22/2002
+# https://www.ics.uci.edu/~eppstein/161/python/knapsack.py
+def itemSize(item): return item[0]
+def itemValue(item): return item[1]
+def itemName(item): return item[2]
+def pack5(items,sizeLimit):
+    P = {}
+    for nItems in range(len(items)+1):
+        for lim in range(sizeLimit+1):
+            if nItems == 0:
+                P[nItems,lim] = 0
+            elif itemSize(items[nItems-1]) > lim:
+                P[nItems,lim] = P[nItems-1,lim]
+            else:
+                P[nItems,lim] = max(P[nItems-1,lim],
+                    P[nItems-1,lim-itemSize(items[nItems-1])] +
+                    itemValue(items[nItems-1]))
 
-        if X >= S[v_id]:
-            cached.append(v_id)
-            X = X - S[v_id]
+    L = []
+    nItems = len(items)
+    lim = sizeLimit
+    while nItems > 0:
+        if P[nItems,lim] == P[nItems-1,lim]:
+            nItems -= 1
+        else:
+            nItems -= 1
+            L.append(itemName(items[nItems]))
+            lim -= itemSize(items[nItems])
 
-    return cached
+    L.reverse()
+    return L
 
 if __name__ == '__main__':
     filename = sys.argv[1]
