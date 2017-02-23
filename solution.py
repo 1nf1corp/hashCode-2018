@@ -24,6 +24,7 @@ def findOptimalVideos(X, S, requests):
 
     return cached
 
+C = 10
 X = 10000
 S = [1000, 5500, 6300, 2500]
 
@@ -39,4 +40,7 @@ test = {
 requests = accumulate(test)
 videos = findOptimalVideos(X, S, requests)
 
-print(videos)
+print(C)
+string = " ".join(map(str, videos))
+for c in range(C):
+    print(str(c), string)
