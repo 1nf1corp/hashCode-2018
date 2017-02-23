@@ -28,12 +28,17 @@ def remove_vid_from_eps(vids, eps, req_dict):
 # Endpoints connected to cache
 def endpointsConnectedToCache(endPoints):
   connectedCaches = {}
-  for idx,endPoint in enumerate(endPoints):
-    for cache, cache_lat in endPoints[1].items():
+  for e in range(len(endPoints)):
+  # for idx,endPoint in enumerate(endPoints):
+    for cache, cache_lat in endPoints[e][1].items():
       if cache in connectedCaches:
-        connectedCaches[cache].append(idx)
+        connectedCaches[cache].append(e)
       else:
-        connectedCaches[cache] = [idx]
+        connectedCaches[cache] = [e]
+
+  for key, value in connectedCaches.items() :
+    print (key, value)
+
   return connectedCaches
 
 # req_dict = {(0,2): 1000, (2,3): 1500}
