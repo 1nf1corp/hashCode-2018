@@ -10,8 +10,9 @@ def solve_per_cache(max_cap, endpoints, S, req_dict):
         pq = tools.top_videos_endpoints(eps, req_dict)
         idx = 0
         # As long as we can pick more, do so
-        while (idx < len(pq) and S[pq[idx][1]] <= max_cap):
-            max_cap = max_cap - S[pq[idx][1]]
+        cap = max_cap
+        while (idx < len(pq) and S[pq[idx][1]] <= cap):
+            cap = cap - S[pq[idx][1]]
             idx = idx + 1
         solution = pq[:idx]
         req_dict = remove_vid_from_eps(solution, eps, req_dict)
