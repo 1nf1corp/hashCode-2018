@@ -1,6 +1,5 @@
 import sys
 import parse
-import knapsack
 
 def accumulate(all_reqs):
     ret = {}
