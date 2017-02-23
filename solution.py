@@ -25,9 +25,13 @@ def itemValue(item): return item[1]
 def itemName(item): return item[2]
 def pack5(items,sizeLimit):
     P = {}
-    for nItems in range(len(items)+1):
+
+    nItems = 0
+    while nItems < len(items) + 1:
         print(nItems)
-        for lim in range(sizeLimit+1):
+        lim = 0
+        while lim < sizeLimit + 1:
+            print(lim)
             if nItems == 0:
                 P[nItems,lim] = 0
             elif itemSize(items[nItems-1]) > lim:
@@ -36,6 +40,8 @@ def pack5(items,sizeLimit):
                 P[nItems,lim] = max(P[nItems-1,lim],
                     P[nItems-1,lim-itemSize(items[nItems-1])] +
                     itemValue(items[nItems-1]))
+            lim += 1
+        nItems += 1
 
     L = []
     nItems = len(items)
