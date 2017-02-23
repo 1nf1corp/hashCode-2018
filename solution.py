@@ -1,3 +1,5 @@
+import parse
+
 def accumulate(all_reqs):
     ret = {}
     for (vid,ep), val in all_reqs.items():
@@ -23,6 +25,17 @@ def findOptimalVideos(X, S, requests):
             X = X - S[v_id]
 
     return cached
+
+if __name__ == '__main__':
+    input = parse.parse('kittens.in')
+    endpoints = input[0]
+    requests = input[1]
+    params = input[2]
+
+    accumulated_requests = accumulate(requests)
+    videosToCache = findOptimalVideos(params.X, params.S, accumulated_requests)
+
+    print(videosToCache)
 
 X = 10000
 S = [1000, 5500, 6300, 2500]
