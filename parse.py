@@ -15,8 +15,9 @@ def parse(filename):
         V, E, R, C, X = parse_line(f)
         S = list(map(int, f.readline().split()))
         endpoints = parse_endpoints(f, E)
-        requests = parse_requests(f, R) 
-        return endpoints, requests
+        requests = parse_requests(f, R)
+        params = {"V": V, "E": E, "R": R, "C": C, "X": X, "S": S}
+        return endpoints, requests, params
 
 def parse_requests(f_open, R):
     requests = {}
@@ -42,8 +43,10 @@ def parse_line(f_open):
     return list(map(int, f_open.readline().split()))
 
 if __name__ == "__main__":
-    endpoints, requests = parse("kittens.in")
+    endpoints, requests, params = parse("kittens.in")
     print("ENDPOINTS: --------")
     print(endpoints[0])
     print("REQUEST: ---------")
     print(requests.popitem())
+    print("PARAMS: ----------")
+    print(params)

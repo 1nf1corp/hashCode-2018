@@ -27,29 +27,15 @@ def findOptimalVideos(X, S, requests):
     return cached
 
 if __name__ == '__main__':
-    input = parse.parse('kittens.in')
+    input = parse.parse('inputs/kittens.in')
     endpoints = input[0]
     requests = input[1]
     params = input[2]
 
     accumulated_requests = accumulate(requests)
-    videosToCache = findOptimalVideos(params.X, params.S, accumulated_requests)
+    videosToCache = findOptimalVideos(params['X'], params['S'], accumulated_requests)
 
-    print(videosToCache)
-
-X = 10000
-S = [1000, 5500, 6300, 2500]
-
-test = {
-    (0,4): 1500,
-    (1,1): 100,
-    (1,4): 1000,
-    (1,3): 1000,
-    (1,9): 1000,
-    (3,4): 2000
-}
-
-requests = accumulate(test)
-videos = findOptimalVideos(X, S, requests)
-
-print(videos)
+    print(params['C'])
+    string = " ".join(map(str, videosToCache))
+    for c in range(params['C']):
+        print(str(c), string)
