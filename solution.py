@@ -22,7 +22,7 @@ def findOptimalVideos(X, S, requests):
             cached.append(v_id)
             X = X - S[v_id]
 
-    print(cached)
+    return cached
 
 X = 10000
 S = [1000, 5500, 6300, 2500]
@@ -37,4 +37,6 @@ test = {
 }
 
 requests = accumulate(test)
-findOptimalVideos(X, S, requests)
+videos = findOptimalVideos(X, S, requests)
+
+print(videos)
